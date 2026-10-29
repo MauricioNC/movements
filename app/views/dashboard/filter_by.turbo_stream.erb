@@ -1,0 +1,3 @@
+<%= turbo_stream.update "movements" do %>
+  <%= render partial: "shared/movements", locals: { movements: @movements } %>
+<% end %>

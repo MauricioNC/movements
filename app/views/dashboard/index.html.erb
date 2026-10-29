@@ -1,39 +1,9 @@
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>RFC</th>
-        <th>Nombre</th>
-        <th>Movimiento</th>
-        <th>Tipo contratacion</th>
-        <th>Cuenta</th>
-        <th>Fecha inicio</th>
-        <th>Adscripcion</th>
-        <th>Clave pres.</th>
-        <th>Comisionado a</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @movements.each do |movement| %>
-        <tr>
-          <td><%= movement.rfc %></td>
-          <td><%= movement.name %></td>
-          <td><%= movement.movement_type %></td>
-          <td><%= movement.place_type %></td>
-          <td><%= movement.account_type %></td>
-          <td><%= movement.start_date %></td>
-          <td><%= movement.adscription %></td>
-          <td><%= movement.budget_key %></td>
-          <td><%= movement.comissioned_to %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div data-controller="movement">
+  <div>
+    <input type="text" id="searchInput" placeholder="Buscar..." data-action="keydown.enter->movement#search" /> 
+  </div>
+  
+  <%= turbo_frame_tag "movements" do %>
+    <%= render 'shared/movements', movements: @movements %>
+  <% end %>
 </div>
-
-<script>
-// Initialise a DataTable
-const table = new DataTable('#myTable', {
-    // Options
-});
-</script>
